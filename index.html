@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Eventos | Colegio Bolívar</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0b2d5c, #1c5da8);
+            color: #ffffff;
+        }
+
+        .contenedor {
+            width: 90%;
+            max-width: 450px;
+            padding: 40px 25px;
+            text-align: center;
+            background: #ffffff;
+            color: #17365d;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitulo {
+            margin-bottom: 30px;
+            color: #555555;
+            font-size: 16px;
+        }
+
+        .contador {
+            margin: 25px 0;
+            font-size: 76px;
+            font-weight: bold;
+            color: #1c5da8;
+            transition: transform 0.15s ease;
+        }
+
+        .contador.animar {
+            transform: scale(1.15);
+        }
+
+        button {
+            width: 100%;
+            margin: 8px 0;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .boton-sumar {
+            background: #1c5da8;
+            color: #ffffff;
+        }
+
+        .boton-sumar:hover {
+            background: #15477f;
+        }
+
+        .boton-restar {
+            background: #e8eef5;
+            color: #17365d;
+        }
+
+        .boton-restar:hover {
+            background: #d5e0ed;
+        }
+
+        .boton-reiniciar {
+            background: #c0392b;
+            color: #ffffff;
+        }
+
+        .boton-reiniciar:hover {
+            background: #962d22;
+        }
+
+        .pie {
+            margin-top: 25px;
+            color: #777777;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <main class="contenedor">
+        <h1>Colegio Bolívar</h1>
+        <p class="subtitulo">Contador de clicks para eventos</p>
+
+        <div
+            id="contador"
+            class="contador"
+            role="status"
+            aria-live="polite"
+            aria-label="Número de clicks"
+        >0</div>
+
+        <button
+            class="boton-sumar"
+            id="sumar"
+            type="button"
+        >
+            + Registrar click
+        </button>
+
+        <button
+            class="boton-restar"
+            id="restar"
+            type="button"
+        >
+            − Restar click
+        </button>
+
+        <button
+            class="boton-reiniciar"
+            id="reiniciar"
+            type="button"
+        >
+            Reiniciar contador
+        </button>
+
+        <p class="pie">
+            Colegio Bolívar · Eventos y actividades escolares
+        </p>
+    </main>
+
+    <script>
+        // Estado inicial del contador
+        let clicks = 0;
+
+        // Elementos de la interfaz
+        const contador = document.getElementById("contador");
+        const botonSumar = document.getElementById("sumar");
+        const botonRestar = document.getElementById("restar");
+        const botonReiniciar = document.getElementById("reiniciar");
+
+        // Actualiza el número mostrado en pantalla
+        function actualizarContador() {
+            contador.textContent = clicks;
+
+            contador.classList.remove("animar");
+
+            // Reinicia la animación para cada actualización
+            void contador.offsetWidth;
+
+            contador.classList.add("animar");
+        }
+
+        // Incrementa el contador
+        botonSumar.addEventListener("click", function () {
+            clicks++;
+            actualizarContador();
+        });
+
+        // Decrementa el contador sin permitir valores negativos
+        botonRestar.addEventListener("click", function () {
+            if (clicks > 0) {
+                clicks--;
+                actualizarContador();
+            }
+        });
+
+        // Reinicia el contador a cero
+        botonReiniciar.addEventListener("click", function () {
+            clicks = 0;
+            actualizarContador();
+        });
+    </script>
+</body>
+</html>
