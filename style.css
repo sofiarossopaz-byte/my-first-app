@@ -1,0 +1,251 @@
+
+:root {
+    --fondo: #080d1b;
+    --panel: #111a2e;
+    --azul-neon: #00e5ff;
+    --verde-neon: #39ffb6;
+    --rosa-neon: #ff3cac;
+    --texto: #f0f6ff;
+    --texto-secundario: #94a3b8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(0, 229, 255, 0.10),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(57, 255, 182, 0.08),
+            transparent 35%
+        ),
+        var(--fondo);
+    color: var(--texto);
+}
+
+.contador-container {
+    width: 100%;
+    max-width: 460px;
+    padding: 36px 28px;
+    text-align: center;
+    background: rgba(17, 26, 46, 0.95);
+    border: 1px solid rgba(0, 229, 255, 0.22);
+    border-radius: 24px;
+    box-shadow:
+        0 0 35px rgba(0, 229, 255, 0.08),
+        0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.etiqueta {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 7px 14px;
+    border: 1px solid rgba(0, 229, 255, 0.35);
+    border-radius: 30px;
+    color: var(--azul-neon);
+    background: rgba(0, 229, 255, 0.07);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+h1 {
+    margin-bottom: 12px;
+    font-size: clamp(25px, 5vw, 32px);
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+.subtitulo {
+    color: var(--texto-secundario);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Campo para editar el título */
+.editor-titulo {
+    margin-top: 28px;
+    text-align: left;
+}
+
+.editor-titulo label {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--texto-secundario);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#tituloEvento {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid rgba(0, 229, 255, 0.35);
+    border-radius: 10px;
+    outline: none;
+    background: var(--fondo);
+    color: var(--texto);
+    font: inherit;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#tituloEvento:focus {
+    border-color: var(--azul-neon);
+    box-shadow: 0 0 14px rgba(0, 229, 255, 0.15);
+}
+
+/* Panel del contador */
+.contador-display {
+    margin: 28px 0;
+    padding: 28px 15px;
+    background: rgba(8, 13, 27, 0.8);
+    border: 1px solid rgba(0, 229, 255, 0.15);
+    border-radius: 18px;
+}
+
+.contador-label {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--texto-secundario);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+#contador {
+    color: var(--azul-neon);
+    font-size: clamp(64px, 15vw, 88px);
+    font-weight: 800;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 25px rgba(0, 229, 255, 0.45);
+    transition: transform 0.15s ease;
+}
+
+#contador.animar {
+    transform: scale(1.08);
+}
+
+/* Botones */
+.botones {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+button {
+    width: 100%;
+    min-height: 52px;
+    padding: 14px 20px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        background 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 4px;
+}
+
+/* Botón para sumar */
+#botonSumar {
+    color: #06121d;
+    background: var(--azul-neon);
+    box-shadow: 0 0 18px rgba(0, 229, 255, 0.22);
+}
+
+#botonSumar:hover {
+    background: #69efff;
+    box-shadow: 0 0 28px rgba(0, 229, 255, 0.45);
+}
+
+/* Botón para restar */
+#botonRestar {
+    color: var(--verde-neon);
+    background: rgba(57, 255, 182, 0.06);
+    border-color: rgba(57, 255, 182, 0.45);
+}
+
+#botonRestar:hover {
+    background: rgba(57, 255, 182, 0.14);
+}
+
+/* Botón para reiniciar */
+#botonReiniciar {
+    color: var(--rosa-neon);
+    background: rgba(255, 60, 172, 0.06);
+    border-color: rgba(255, 60, 172, 0.4);
+}
+
+#botonReiniciar:hover {
+    background: rgba(255, 60, 172, 0.14);
+    box-shadow: 0 0 20px rgba(255, 60, 172, 0.12);
+}
+
+/* Mensajes */
+#mensaje {
+    min-height: 24px;
+    margin-top: 22px;
+    color: var(--texto-secundario);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Pie de página */
+footer {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(148, 163, 184, 0.12);
+    color: #64748b;
+    font-size: 12px;
+}
+
+footer span {
+    color: var(--azul-neon);
+}
+
+/* Adaptación a pantallas pequeñas */
+@media (max-width: 400px) {
+    .contador-container {
+        padding: 28px 20px;
+    }
+}
+
+/* Accesibilidad: reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
